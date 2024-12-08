@@ -9,6 +9,7 @@ import {
   LayoutGrid,
   Menu 
 } from 'lucide-react';
+import { API_URL } from '../config';
 
 function Gallery() {
   const [images, setImages] = useState([]);
@@ -23,7 +24,7 @@ function Gallery() {
 
   const fetchImages = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/images');
+      const response = await fetch(`${API_URL}/api/images`);
       if (!response.ok) throw new Error('Failed to fetch images');
       const data = await response.json();
       setImages(data);
@@ -37,7 +38,7 @@ function Gallery() {
 
   const handleDelete = async (imageId) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/images/${imageId}`, {
+      const response = await fetch(`${API_URL}/api/images/${imageId}`, {
         method: 'DELETE',
       });
 

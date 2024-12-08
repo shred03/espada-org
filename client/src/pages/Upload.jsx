@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Upload, Image as ImageIcon, X, FileImage } from 'lucide-react';
-
+import {API_URL} from "../config";
 function DragDropUpload() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [dragging, setDragging] = useState(false);
@@ -70,7 +70,7 @@ function DragDropUpload() {
     formData.append('image', selectedFile);
 
     try {
-      const response = await fetch('http://localhost:5000/api/upload', {
+      const response = await fetch(`${API_URL}/api/upload`, {
         method: 'POST',
         body: formData,
       });
